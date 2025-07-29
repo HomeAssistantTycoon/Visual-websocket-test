@@ -13,7 +13,8 @@
       log.textContent += msg + "\n";
     }
 
-    const ws = new WebSocket("https://websocket-test-t9ah.onrender.comm");
+   const ws = new WebSocket("wss://websocket-test-t9ah.onrender.com");
+
 
     ws.onopen = () => {
       appendLog("✅ Connected to WebSocket server");
