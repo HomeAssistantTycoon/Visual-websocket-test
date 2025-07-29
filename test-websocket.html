@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket Test</title>
+</head>
+<body>
+  <h2>WebSocket Test</h2>
+  <pre id="log"></pre>
+
+  <script>
+    const log = document.getElementById("log");
+    function appendLog(msg) {
+      log.textContent += msg + "\n";
+    }
+
+    const ws = new WebSocket("https://websocket-test-t9ah.onrender.comm");
+
+    ws.onopen = () => {
+      appendLog("✅ Connected to WebSocket server");
+      ws.send("Hello from test page!");
+    };
+
+    ws.onmessage = (event) => {
+      appendLog("📩 Received: " + event.data);
+    };
+
+    ws.onerror = (error) => {
+      appendLog("❌ Error: " + error.message);
+    };
+
+    ws.onclose = () => {
+      appendLog("❌ Disconnected from server");
+    };
+  </script>
+</body>
+</html>
